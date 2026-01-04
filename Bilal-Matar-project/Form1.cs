@@ -90,7 +90,7 @@ namespace Bilal_Matar_project
             string email = txt_logEmail.Text.Trim();
             string password = txt_logPassword.Text.Trim();
 
-            if(txt_logEmail.Text.Trim() == "" || txt_logPassword.Text.Trim() == "")
+            if (txt_logEmail.Text.Trim() == "" || txt_logPassword.Text.Trim() == "")
             {
                 MessageBox.Show("Please fill in all fields.");
                 return;
@@ -106,11 +106,12 @@ namespace Bilal_Matar_project
                 return;
 
             }
-            if (teacherExist) { 
-            String queryTeacher = "SELECT TeacherId FROM Teacher WHERE Email = @email AND PasswordHash = @password";
-            SqlCommand cmdTeacher = new SqlCommand(queryTeacher, conn);
-            cmdTeacher.Parameters.AddWithValue("@email", email);
-            cmdTeacher.Parameters.AddWithValue("@password", password);
+            if (teacherExist)
+            {
+                String queryTeacher = "SELECT TeacherId FROM Teacher WHERE Email = @email AND PasswordHash = @password";
+                SqlCommand cmdTeacher = new SqlCommand(queryTeacher, conn);
+                cmdTeacher.Parameters.AddWithValue("@email", email);
+                cmdTeacher.Parameters.AddWithValue("@password", password);
 
                 try
                 {
@@ -235,6 +236,21 @@ namespace Bilal_Matar_project
         private void ll_login_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             tabControl1.SelectedTab = Register_page;
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            txt_logPassword.PasswordChar = cb_reg.Checked ? '\0' : '*';
+        }
+
+        private void cb_reg_CheckedChanged(object sender, EventArgs e)
+        {
+            txt_regPassword.PasswordChar = cb_reg.Checked ? '\0' : '*';
+        }
+
+        private void cb_log_CheckedChanged(object sender, EventArgs e)
+        {
+            txt_logPassword.PasswordChar = cb_log.Checked ? '\0' : '*';
         }
     }
 }

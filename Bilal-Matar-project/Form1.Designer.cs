@@ -33,7 +33,7 @@
             txt_regEmail = new TextBox();
             btn_up = new Button();
             groupBox1 = new GroupBox();
-            checkBox1 = new CheckBox();
+            cb_reg = new CheckBox();
             ll_register = new LinkLabel();
             txt_regPassword = new TextBox();
             txt_name = new TextBox();
@@ -45,7 +45,7 @@
             tabControl1 = new TabControl();
             Login_page = new TabPage();
             groupBox2 = new GroupBox();
-            checkBox2 = new CheckBox();
+            cb_log = new CheckBox();
             ll_login = new LinkLabel();
             txt_logPassword = new TextBox();
             txt_logEmail = new TextBox();
@@ -90,7 +90,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(checkBox1);
+            groupBox1.Controls.Add(cb_reg);
             groupBox1.Controls.Add(ll_register);
             groupBox1.Controls.Add(txt_regPassword);
             groupBox1.Controls.Add(txt_name);
@@ -107,15 +107,16 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
             // 
-            // checkBox1
+            // cb_reg
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(113, 155);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(132, 24);
-            checkBox1.TabIndex = 4;
-            checkBox1.Text = "Show Password";
-            checkBox1.UseVisualStyleBackColor = true;
+            cb_reg.AutoSize = true;
+            cb_reg.Location = new Point(113, 155);
+            cb_reg.Name = "cb_reg";
+            cb_reg.Size = new Size(132, 24);
+            cb_reg.TabIndex = 4;
+            cb_reg.Text = "Show Password";
+            cb_reg.UseVisualStyleBackColor = true;
+            cb_reg.CheckedChanged += cb_reg_CheckedChanged;
             // 
             // ll_register
             // 
@@ -207,7 +208,7 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(checkBox2);
+            groupBox2.Controls.Add(cb_log);
             groupBox2.Controls.Add(ll_login);
             groupBox2.Controls.Add(txt_logPassword);
             groupBox2.Controls.Add(txt_logEmail);
@@ -222,15 +223,16 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "groupBox1";
             // 
-            // checkBox2
+            // cb_log
             // 
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(111, 123);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(132, 24);
-            checkBox2.TabIndex = 4;
-            checkBox2.Text = "Show Password";
-            checkBox2.UseVisualStyleBackColor = true;
+            cb_log.AutoSize = true;
+            cb_log.Location = new Point(111, 123);
+            cb_log.Name = "cb_log";
+            cb_log.Size = new Size(132, 24);
+            cb_log.TabIndex = 4;
+            cb_log.Text = "Show Password";
+            cb_log.UseVisualStyleBackColor = true;
+            cb_log.CheckedChanged += cb_log_CheckedChanged;
             // 
             // ll_login
             // 
@@ -336,7 +338,7 @@
         private TextBox txt_regPassword;
         private Label label2;
         private Button btn_regCancel;
-        private CheckBox checkBox1;
+        private CheckBox cb_reg;
         private LinkLabel ll_register;
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem loginToolStripMenuItem;
@@ -346,7 +348,7 @@
         private TextBox txt_name;
         private Label txt_regName;
         private GroupBox groupBox2;
-        private CheckBox checkBox2;
+        private CheckBox cb_log;
         private LinkLabel ll_login;
         private TextBox txt_logPassword;
         private TextBox txt_logEmail;
