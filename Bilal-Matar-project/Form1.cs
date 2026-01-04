@@ -27,7 +27,9 @@ namespace Bilal_Matar_project
 
                 if (reader.Read())
                 {
-                    exists = true;
+                    int count = reader.GetInt32(0);
+                    if (count > 0) 
+                        exists = true; 
                 }
 
                 reader.Close();
@@ -59,7 +61,9 @@ namespace Bilal_Matar_project
 
                 if (reader.Read())
                 {
-                    exists = true;
+                    int count = reader.GetInt32(0);
+                    if (count > 0)
+                        exists = true;
                 }
 
                 reader.Close();
@@ -101,9 +105,35 @@ namespace Bilal_Matar_project
                 return;
 
             }
+        string name = txt_name.Text.Trim();
+        string email = txt_regEmail.Text.Trim();
+        string password = txt_regPassword.Text.Trim();
 
+            string query = "INSERT INTO Student (Name, Email, PasswordHash) VALUES (@name, @email, @password)";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@password", password);
 
+            try
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Student registered successfully");
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            txt_name.Clear();
+            txt_regEmail.Clear();
+            txt_regPassword.Clear();
         }
     }
 }
