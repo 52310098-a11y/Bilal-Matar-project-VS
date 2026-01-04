@@ -1,7 +1,12 @@
+using Microsoft.Data.SqlClient;
+using System.Data;
+
 namespace Bilal_Matar_project
 {
     public partial class Form1 : Form
     {
+        static string connString = "Data Source=.\\SQLEXPRESS; Initial Catalog=project_dbvs;Integrated Security=True; TrustServerCertificate=True";
+        SqlConnection conn = new SqlConnection(connString);
         public Form1()
         {
             InitializeComponent();
