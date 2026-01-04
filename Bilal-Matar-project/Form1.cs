@@ -16,5 +16,15 @@ namespace Bilal_Matar_project
         {
 
         }
+
+        private void btn_in_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btn_up_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
