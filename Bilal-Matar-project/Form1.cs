@@ -125,6 +125,10 @@ namespace Bilal_Matar_project
                         conn.Close();
 
                         MessageBox.Show("Teacher login successful");
+
+                        TeacherDashboard form2 = new TeacherDashboard(teacherId);
+                        form2.Show();
+
                         return;
                     }
                     else
@@ -158,6 +162,9 @@ namespace Bilal_Matar_project
                     conn.Close();
 
                     MessageBox.Show("Student login successful");
+                    StudentDashboard form3 = new StudentDashboard(studentId);
+                    form3.Show();
+
                     return;
                 }
                 else
