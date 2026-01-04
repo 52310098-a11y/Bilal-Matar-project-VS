@@ -87,7 +87,93 @@ namespace Bilal_Matar_project
 
         private void btn_in_Click(object sender, EventArgs e)
         {
+            string email = txt_logEmail.Text.Trim();
+            string password = txt_logPassword.Text.Trim();
 
+            if(txt_logEmail.Text.Trim() == "" || txt_logPassword.Text.Trim() == "")
+            {
+                MessageBox.Show("Please fill in all fields.");
+                return;
+            }
+            // checking if email exists
+            bool teacherExist = TeacherEmailExists(txt_logEmail.Text);
+            bool studentExist = StudentEmailExists(txt_logEmail.Text);
+
+            if (!teacherExist && !studentExist)
+            {
+                MessageBox.Show("This email does not exist");
+                txt_logEmail.Focus();
+                return;
+
+            }
+            if (teacherExist) { 
+            String queryTeacher = "SELECT TeacherId FROM Teacher WHERE Email = @email AND PasswordHash = @password";
+            SqlCommand cmdTeacher = new SqlCommand(queryTeacher, conn);
+            cmdTeacher.Parameters.AddWithValue("@email", email);
+            cmdTeacher.Parameters.AddWithValue("@password", password);
+
+                try
+                {
+                    conn.Open();
+                    SqlDataReader reader = cmdTeacher.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        int teacherId = reader.GetInt32(0);
+                        reader.Close();
+                        conn.Close();
+
+                        MessageBox.Show("Teacher login successful");
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid email or password");
+                    }
+                    reader.Close();
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    conn.Close();
+                    return;
+                }
+            }
+            String queryStudent = "SELECT StudentId FROM Student WHERE Email = @email AND PasswordHash = @password";
+            SqlCommand cmdStudent = new SqlCommand(queryStudent, conn);
+            cmdStudent.Parameters.AddWithValue("@email", email);
+            cmdStudent.Parameters.AddWithValue("@password", password);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = cmdStudent.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    int studentId = reader.GetInt32(0);
+                    reader.Close();
+                    conn.Close();
+
+                    MessageBox.Show("Student login successful");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Invalid email or password");
+                }
+                reader.Close();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                conn.Close();
+                return;
+            }
+
+            MessageBox.Show("Invalid email or password");
         }
 
         private void btn_up_Click(object sender, EventArgs e)
