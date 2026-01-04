@@ -28,13 +28,13 @@ namespace Bilal_Matar_project
                 if (reader.Read())
                 {
                     int count = reader.GetInt32(0);
-                    if (count > 0) 
-                        exists = true; 
+                    if (count > 0)
+                        exists = true;
                 }
 
                 reader.Close();
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -87,12 +87,12 @@ namespace Bilal_Matar_project
 
         private void btn_in_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btn_up_Click(object sender, EventArgs e)
         {
-            if(txt_name.Text.Trim() == "" || txt_regEmail.Text.Trim() == "" || txt_regPassword.Text.Trim() == "")
+            if (txt_name.Text.Trim() == "" || txt_regEmail.Text.Trim() == "" || txt_regPassword.Text.Trim() == "")
             {
                 MessageBox.Show("Please fill in all fields.");
                 return;
@@ -105,9 +105,9 @@ namespace Bilal_Matar_project
                 return;
 
             }
-        string name = txt_name.Text.Trim();
-        string email = txt_regEmail.Text.Trim();
-        string password = txt_regPassword.Text.Trim();
+            string name = txt_name.Text.Trim();
+            string email = txt_regEmail.Text.Trim();
+            string password = txt_regPassword.Text.Trim();
 
             string query = "INSERT INTO Student (Name, Email, PasswordHash) VALUES (@name, @email, @password)";
             SqlCommand cmd = new SqlCommand(query, conn);
@@ -134,6 +134,21 @@ namespace Bilal_Matar_project
             txt_name.Clear();
             txt_regEmail.Clear();
             txt_regPassword.Clear();
+        }
+
+        private void btn_regCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ll_register_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            tabControl1.SelectedTab = Login_page;
+        }
+
+        private void ll_login_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            tabControl1.SelectedTab = Register_page;
         }
     }
 }

@@ -126,6 +126,7 @@
             ll_register.TabIndex = 3;
             ll_register.TabStop = true;
             ll_register.Text = "Already registered? Click to Login";
+            ll_register.LinkClicked += ll_register_LinkClicked;
             // 
             // txt_regPassword
             // 
@@ -168,6 +169,7 @@
             btn_regCancel.TabIndex = 2;
             btn_regCancel.Text = "Cancel";
             btn_regCancel.UseVisualStyleBackColor = true;
+            btn_regCancel.Click += btn_regCancel_Click;
             // 
             // contextMenuStrip1
             // 
@@ -239,6 +241,7 @@
             ll_login.TabIndex = 3;
             ll_login.TabStop = true;
             ll_login.Text = "No account? Click to register";
+            ll_login.LinkClicked += ll_login_LinkClicked;
             // 
             // txt_logPassword
             // 
@@ -281,6 +284,7 @@
             btn_cancel.TabIndex = 2;
             btn_cancel.Text = "Cancel";
             btn_cancel.UseVisualStyleBackColor = true;
+            btn_cancel.Click += btn_regCancel_Click;
             // 
             // btn_in
             // 
